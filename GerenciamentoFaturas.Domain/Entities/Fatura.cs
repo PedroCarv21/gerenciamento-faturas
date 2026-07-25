@@ -34,5 +34,15 @@ namespace GerenciamentoFaturas.Domain.Entities
             ValorTotal = 0;
             Itens = new List<ItemFatura>();
         }
+
+        public void Fechar()
+        {
+            if (Status == StatusFatura.Fechada)
+            {
+                throw new InvalidOperationException("A fatura já está fechada.");
+            }
+
+            Status = StatusFatura.Fechada;
+        }
     }
 }

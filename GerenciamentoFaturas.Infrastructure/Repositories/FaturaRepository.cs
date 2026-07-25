@@ -74,5 +74,10 @@ namespace GerenciamentoFaturas.Infrastructure.Repositories
         {
             _contexto.Dispose();
         }
+
+        public void Fechar(Fatura fatura)
+        {
+            _contexto.Entry(fatura).State = EntityState.Modified;
+        }
     }
 }

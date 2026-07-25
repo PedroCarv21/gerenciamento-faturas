@@ -11,6 +11,8 @@ namespace GerenciamentoFaturas.Domain.Interfaces
 
         void Atualizar(Fatura fatura);
 
+        void Fechar(Fatura fatura);
+
         Fatura ObterPorId(Guid id);
 
         IEnumerable<Fatura> Consultar(
