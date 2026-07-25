@@ -14,6 +14,8 @@ namespace GerenciamentoFaturas.Domain.Entities
 
         public decimal ValorTotal { get; private set; }
 
+        public string Justificativa { get; private set; }
+
         public Guid FaturaId { get; private set; }
 
         public virtual Fatura Fatura { get; private set; }

@@ -18,8 +18,6 @@ namespace GerenciamentoFaturas.Domain.Entities
 
         public decimal ValorTotal { get; private set; }
 
-        public string Justificativa { get; private set; }
-
         public virtual ICollection<ItemFatura> Itens { get; private set; }
 
         protected Fatura()
