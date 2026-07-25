@@ -1,0 +1,10 @@
+is_global = true
+build_property.IsMSTestTestAdapterReferenced = true
+build_property.MSTestSourceGenMode = ReflectionFree
+build_property.RootNamespace = GerenciamentoFaturas.Tests
+build_property.ProjectDir = D:\SCORB\CONTEUDO_PROJETO\GerenciamentoFaturas\GerenciamentoFaturas.Tests\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.CsWinRTUseWindowsUIXamlProjections = false
+build_property.EffectiveAnalysisLevelStyle = 
+build_property.EnableCodeStyleSeverity = 

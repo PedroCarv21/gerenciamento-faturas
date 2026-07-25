@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="GerenciamentoFaturas.Application/GerenciamentoFaturas.Application.csproj" Id="84ed0021-7237-486c-ae56-5feb3bfbeb6f" />
+  <Project Path="GerenciamentoFaturas.Domain/GerenciamentoFaturas.Domain.csproj" Id="dfb5e48d-4d9b-4650-a3d5-7f99f9b24576" />
+  <Project Path="GerenciamentoFaturas.Infrastructure/GerenciamentoFaturas.Infrastructure.csproj" Id="7f91eb39-3ccf-4330-8bcd-b0df20602074" />
+  <Project Path="GerenciamentoFaturas.Tests/GerenciamentoFaturas.Tests.csproj" />
+  <Project Path="GerenciamentoFaturas/GerenciamentoFaturas.API.csproj" Id="3e18e561-c9fe-4f0e-995a-ca1c844eb361" />
+</Solution>
