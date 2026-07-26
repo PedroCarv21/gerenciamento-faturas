@@ -42,5 +42,18 @@ namespace GerenciamentoFaturas.Domain.Entities
         {
             FaturaId = faturaId;
         }
+
+        public void Atualizar(
+            string descricao,
+            int quantidade,
+            decimal valorUnitario,
+            string justificativa)
+        {
+            Descricao = descricao;
+            Quantidade = quantidade;
+            ValorUnitario = valorUnitario;
+            ValorTotal = quantidade * valorUnitario;
+            Justificativa = justificativa;
+        }
     }
 }

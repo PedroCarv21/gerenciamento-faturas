@@ -7,6 +7,7 @@ using GerenciamentoFaturas.Domain.Exceptions;
 using GerenciamentoFaturas.Domain.Interfaces;
 using GerenciamentoFaturas.Infrastructure.Mappers;
 using System;
+using System.Linq;
 
 namespace GerenciamentoFaturas.Application.Services
 {
@@ -60,6 +61,62 @@ namespace GerenciamentoFaturas.Application.Services
             _itemFaturaRepository.Salvar();
 
             return FaturaMapper.ToFaturaItensDtoResponse(fatura);
+        }
+
+        public FaturaItensResponseDto Atualizar(Guid id, ItemFaturaRequestDto request)
+        {
+            if (request == null)
+                throw new ArgumentNullException(nameof(request));
+
+            var item = _itemFaturaRepository.ObterPorId(id);
+
+            if (item == null)
+                throw new ArgumentException("Item da fatura não encontrado.");
+
+            var fatura = _faturaRepository.ObterPorId(item.FaturaId);
+
+            if (fatura == null)
+                throw new FaturaNaoEncontradaException();
+
+            if (fatura.Status == StatusFatura.Fechada)
+                throw new FaturaFechadaException();
+
+            item.Atualizar(
+                request.Descricao,
+                request.Quantidade,
+                request.ValorUnitario,
+                request.Justificativa);
+
+            fatura.RecalcularValorTotal();
+
+            _itemFaturaRepository.Atualizar(item);
+            _itemFaturaRepository.Salvar();
+
+            return FaturaMapper.ToFaturaItensDtoResponse(fatura);
+        }
+
+        public void Remover(Guid id)
+        {
+            var item = _itemFaturaRepository.ObterPorId(id);
+
+            if (item == null)
+                throw new ArgumentException("Item da fatura não encontrado.");
+
+            var fatura = _faturaRepository.ObterPorId(item.FaturaId);
+
+            if (fatura == null)
+                throw new FaturaNaoEncontradaException();
+
+            if (fatura.Status == StatusFatura.Fechada)
+                throw new FaturaFechadaException();
+
+            fatura.Itens.Remove(item);
+
+            fatura.RecalcularValorTotal();
+
+            _itemFaturaRepository.Remover(item);
+
+            _itemFaturaRepository.Salvar();
         }
     }
 }

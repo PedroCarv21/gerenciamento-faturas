@@ -45,5 +45,53 @@ namespace GerenciamentoFaturas.API.Controllers
                 return Content(HttpStatusCode.BadRequest, ex.Message);
             }
         }
+
+        [HttpPut]
+        [Route("{id:guid}")]
+        public IHttpActionResult Atualizar(Guid id, ItemFaturaRequestDto request)
+        {
+            try
+            {
+                var response = _itemFaturaService.Atualizar(id, request);
+
+                return Ok(response);
+            }
+            catch (ArgumentException ex)
+            {
+                return Content(HttpStatusCode.BadRequest, ex.Message);
+            }
+            catch (FaturaNaoEncontradaException ex)
+            {
+                return Content(HttpStatusCode.NotFound, ex.Message);
+            }
+            catch (FaturaFechadaException ex)
+            {
+                return Content(HttpStatusCode.BadRequest, ex.Message);
+            }
+        }
+
+        [HttpDelete]
+        [Route("{id:guid}")]
+        public IHttpActionResult Remover(Guid id)
+        {
+            try
+            {
+                _itemFaturaService.Remover(id);
+
+                return Ok();
+            }
+            catch (ArgumentException ex)
+            {
+                return Content(HttpStatusCode.BadRequest, ex.Message);
+            }
+            catch (FaturaNaoEncontradaException ex)
+            {
+                return Content(HttpStatusCode.NotFound, ex.Message);
+            }
+            catch (FaturaFechadaException ex)
+            {
+                return Content(HttpStatusCode.BadRequest, ex.Message);
+            }
+        }
     }
 }

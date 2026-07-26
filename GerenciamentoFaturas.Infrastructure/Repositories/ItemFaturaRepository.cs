@@ -1,6 +1,7 @@
 ﻿using GerenciamentoFaturas.Domain.Entities;
 using GerenciamentoFaturas.Domain.Interfaces;
 using GerenciamentoFaturas.Infrastructure.Context;
+using System;
 
 namespace GerenciamentoFaturas.Infrastructure.Repositories
 {
@@ -16,6 +17,21 @@ namespace GerenciamentoFaturas.Infrastructure.Repositories
         public void Adicionar(ItemFatura item)
         {
             _context.ItensFatura.Add(item);
+        }
+
+        public ItemFatura ObterPorId(Guid id)
+        {
+            return _context.ItensFatura.Find(id);
+        }
+
+        public void Atualizar(ItemFatura item)
+        {
+            _context.Entry(item).State = System.Data.Entity.EntityState.Modified;
+        }
+
+        public void Remover(ItemFatura item)
+        {
+            _context.ItensFatura.Remove(item);
         }
 
         public void Salvar()

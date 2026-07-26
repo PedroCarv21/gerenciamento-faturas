@@ -1,6 +1,7 @@
 ﻿using GerenciamentoFaturas.Domain.Enums;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace GerenciamentoFaturas.Domain.Entities
 {
@@ -59,6 +60,17 @@ namespace GerenciamentoFaturas.Domain.Entities
         public void Fechar()
         {
             Status = StatusFatura.Fechada;
+        }
+
+        public void RecalcularValorTotal()
+        {
+            ValorTotal = Itens.Sum(i => i.ValorTotal);
+        }
+
+        public void RemoverItem(ItemFatura item)
+        {
+            Itens.Remove(item);
+            RecalcularValorTotal();
         }
     }
 }
