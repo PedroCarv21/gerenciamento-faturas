@@ -30,7 +30,8 @@ namespace GerenciamentoFaturas.Infrastructure.Configurations
 
             HasMany(f => f.Itens)
                 .WithRequired(i => i.Fatura)
-                .HasForeignKey(i => i.FaturaId);
+                .HasForeignKey(i => i.FaturaId)
+                .WillCascadeOnDelete(true);
         }
     }
 }

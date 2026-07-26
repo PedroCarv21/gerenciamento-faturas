@@ -56,6 +56,7 @@
     <Compile Include="Exceptions\FaturaFechadaException.cs" />
     <Compile Include="Exceptions\FaturaNaoEncontradaException.cs" />
     <Compile Include="Interfaces\IFaturaRepository.cs" />
+    <Compile Include="Interfaces\IItemFaturaRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

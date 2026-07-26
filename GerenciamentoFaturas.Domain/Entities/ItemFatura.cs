@@ -27,13 +27,20 @@ namespace GerenciamentoFaturas.Domain.Entities
         public ItemFatura(
             string descricao,
             int quantidade,
-            decimal valorUnitario)
+            decimal valorUnitario,
+            string justificativa)
         {
             Id = Guid.NewGuid();
             Descricao = descricao;
             Quantidade = quantidade;
             ValorUnitario = valorUnitario;
             ValorTotal = quantidade * valorUnitario;
+            Justificativa = justificativa;
+        }
+
+        public void DefinirFatura(Guid faturaId)
+        {
+            FaturaId = faturaId;
         }
     }
 }

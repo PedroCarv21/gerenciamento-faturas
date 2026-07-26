@@ -47,6 +47,15 @@ namespace GerenciamentoFaturas.Domain.Entities
             DataEmissao = dataEmissao;
         }
 
+        public void AdicionarItem(ItemFatura item)
+        {
+            item.DefinirFatura(Id);
+
+            Itens.Add(item);
+
+            ValorTotal += item.ValorTotal;
+        }
+
         public void Fechar()
         {
             Status = StatusFatura.Fechada;

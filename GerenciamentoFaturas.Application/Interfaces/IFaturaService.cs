@@ -9,13 +9,13 @@ namespace GerenciamentoFaturas.Application.Interfaces
     {
         FaturaResponseDto Adicionar(FaturaRequestDto request);
 
-        FaturaResponseDto Atualizar(Guid id, FaturaRequestDto request);
+        FaturaItensResponseDto Atualizar(Guid id, FaturaRequestDto request);
 
-        IEnumerable<FaturaResponseDto> Consultar(
+        IEnumerable<FaturaItensResponseDto> Consultar(
             string nomeCliente,
             DateTime? dataEmissao,
             StatusFatura? status);
 
-        FaturaResponseDto Fechar(Guid id);
+        FaturaItensResponseDto Fechar(Guid id);
     }
 }

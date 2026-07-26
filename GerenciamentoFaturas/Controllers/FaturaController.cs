@@ -3,6 +3,7 @@ using GerenciamentoFaturas.Application.Interfaces;
 using GerenciamentoFaturas.Domain.Enums;
 using GerenciamentoFaturas.Domain.Exceptions;
 using System;
+using System.Net;
 using System.Web.Http;
 
 namespace GerenciamentoFaturas.API.Controllers
@@ -59,7 +60,7 @@ namespace GerenciamentoFaturas.API.Controllers
             }
             catch (FaturaNaoEncontradaException ex)
             {
-                return NotFound();
+                return Content(HttpStatusCode.NotFound, ex.Message);
             }
             catch (FaturaFechadaException ex)
             {
@@ -77,9 +78,9 @@ namespace GerenciamentoFaturas.API.Controllers
 
                 return Ok(response);
             }
-            catch (FaturaNaoEncontradaException)
+            catch (FaturaNaoEncontradaException ex)
             {
-                return NotFound();
+                return Content(HttpStatusCode.NotFound, ex.Message);
             }
             catch (FaturaFechadaException ex)
             {

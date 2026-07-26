@@ -50,10 +50,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DTOs\FaturaItensResponseDto.cs" />
     <Compile Include="DTOs\FaturaRequestDto.cs" />
     <Compile Include="DTOs\FaturaResponseDto.cs" />
+    <Compile Include="DTOs\ItemFaturaRequestDto.cs" />
+    <Compile Include="DTOs\ItemFaturaResponseDto.cs" />
     <Compile Include="Interfaces\IFaturaService.cs" />
     <Compile Include="Mappers\FaturaMapper.cs" />
+    <Compile Include="Mappers\ItemFaturaMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\FaturaService.cs" />
   </ItemGroup>

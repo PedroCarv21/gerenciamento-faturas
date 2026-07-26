@@ -25,6 +25,12 @@ namespace GerenciamentoFaturas.API.App_Start
             container.RegisterType<IFaturaService, FaturaService>(
                 new HierarchicalLifetimeManager());
 
+            container.RegisterType<IItemFaturaService, ItemFaturaService>(
+                new HierarchicalLifetimeManager());
+
+            container.RegisterType<IItemFaturaRepository, ItemFaturaRepository>(
+                new HierarchicalLifetimeManager());
+
             GlobalConfiguration.Configuration.DependencyResolver =
                 new UnityDependencyResolver(container);
         }
