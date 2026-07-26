@@ -1,4 +1,4 @@
-﻿namespace GerenciamentoFaturas.Tests
+﻿namespace GerenciamentoFaturas.Test
 {
     [TestClass]
     public sealed class Test1
