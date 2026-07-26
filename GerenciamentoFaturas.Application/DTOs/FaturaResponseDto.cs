@@ -3,7 +3,7 @@ using System;
 
 namespace GerenciamentoFaturas.Application.DTOs
 {
-    public class AdicionarFaturaResponseDto
+    public class FaturaResponseDto
     {
         public Guid Id { get; set; }
 

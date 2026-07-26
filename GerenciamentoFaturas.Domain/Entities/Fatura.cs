@@ -26,6 +26,11 @@ namespace GerenciamentoFaturas.Domain.Entities
 
         public Fatura(int numero, string nomeCliente, DateTime dataEmissao)
         {
+            if (string.IsNullOrWhiteSpace(nomeCliente))
+            {
+                throw new ArgumentException("Nome do cliente obrigatório." );
+            }
+
             Id = Guid.NewGuid();
             Numero = numero;
             NomeCliente = nomeCliente;
@@ -35,13 +40,15 @@ namespace GerenciamentoFaturas.Domain.Entities
             Itens = new List<ItemFatura>();
         }
 
+        public void Atualizar(int numero, string nomeCliente, DateTime dataEmissao)
+        {
+            Numero = numero;
+            NomeCliente = nomeCliente;
+            DataEmissao = dataEmissao;
+        }
+
         public void Fechar()
         {
-            if (Status == StatusFatura.Fechada)
-            {
-                throw new InvalidOperationException("A fatura já está fechada.");
-            }
-
             Status = StatusFatura.Fechada;
         }
     }
