@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GerenciamentoFaturas.Tests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b8f30c8ffa35c813080df18a2950c5c50c9847a3")]
 [assembly: System.Reflection.AssemblyProductAttribute("GerenciamentoFaturas.Tests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GerenciamentoFaturas.Tests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

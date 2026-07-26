@@ -50,7 +50,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="Entities\Fatura.cs" />
+    <Compile Include="Entities\ItemFatura.cs" />
+    <Compile Include="Enums\StatusFatura.cs" />
+    <Compile Include="Exceptions\FaturaFechadaException.cs" />
+    <Compile Include="Exceptions\FaturaNaoEncontradaException.cs" />
+    <Compile Include="Interfaces\IFaturaRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -61,5 +66,6 @@
     <Analyzer Include="..\packages\MSTest.Analyzers.3.11.1\analyzers\dotnet\cs\MSTest.Analyzers.CodeFixes.dll" />
     <Analyzer Include="..\packages\MSTest.Analyzers.3.11.1\analyzers\dotnet\cs\MSTest.Analyzers.dll" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
