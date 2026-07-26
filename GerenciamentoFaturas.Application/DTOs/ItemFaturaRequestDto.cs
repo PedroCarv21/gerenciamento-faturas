@@ -4,8 +4,6 @@ namespace GerenciamentoFaturas.Application.DTOs
 {
     public class ItemFaturaRequestDto
     {
-        public Guid FaturaId { get; set; }
-
         public string Descricao { get; set; }
 
         public int Quantidade { get; set; }

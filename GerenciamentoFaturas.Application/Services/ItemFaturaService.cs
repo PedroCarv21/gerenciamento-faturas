@@ -23,14 +23,14 @@ namespace GerenciamentoFaturas.Application.Services
             _faturaRepository = faturaRepository;
         }
 
-        public FaturaItensResponseDto Adicionar(ItemFaturaRequestDto request)
+        public FaturaItensResponseDto Adicionar(Guid faturaId, ItemFaturaRequestDto request)
         {
             if (request == null)
             {
                 throw new ArgumentNullException(nameof(request));
             }
 
-            var fatura = _faturaRepository.ObterPorId(request.FaturaId);
+            var fatura = _faturaRepository.ObterPorId(faturaId);
 
             if (fatura == null)
             {
