@@ -7,8 +7,8 @@ namespace GerenciamentoFaturas.Application.Interfaces
     {
         FaturaItensResponseDto Adicionar(Guid faturaId, ItemFaturaRequestDto request);
 
-        FaturaItensResponseDto Atualizar(Guid id, ItemFaturaRequestDto request);
+        FaturaItensResponseDto Atualizar(Guid faturaId, Guid id, ItemFaturaRequestDto request);
 
-        void Remover(Guid id);
+        void Remover(Guid faturaId, Guid id);
     }
 }

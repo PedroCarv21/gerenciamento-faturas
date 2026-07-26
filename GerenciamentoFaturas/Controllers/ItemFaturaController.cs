@@ -48,11 +48,11 @@ namespace GerenciamentoFaturas.API.Controllers
 
         [HttpPut]
         [Route("{id:guid}")]
-        public IHttpActionResult Atualizar(Guid id, ItemFaturaRequestDto request)
+        public IHttpActionResult Atualizar(Guid faturaId, Guid id, ItemFaturaRequestDto request)
         {
             try
             {
-                var response = _itemFaturaService.Atualizar(id, request);
+                var response = _itemFaturaService.Atualizar(faturaId, id, request);
 
                 return Ok(response);
             }
@@ -72,11 +72,11 @@ namespace GerenciamentoFaturas.API.Controllers
 
         [HttpDelete]
         [Route("{id:guid}")]
-        public IHttpActionResult Remover(Guid id)
+        public IHttpActionResult Remover(Guid faturaId, Guid id)
         {
             try
             {
-                _itemFaturaService.Remover(id);
+                _itemFaturaService.Remover(faturaId, id);
 
                 return Ok();
             }

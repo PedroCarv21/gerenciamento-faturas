@@ -72,5 +72,10 @@ namespace GerenciamentoFaturas.Domain.Entities
             Itens.Remove(item);
             RecalcularValorTotal();
         }
+
+        public bool EstaFechada()
+        {
+            return Status == StatusFatura.Fechada;
+        }
     }
 }
