@@ -3,16 +3,12 @@
   "WorkspaceRootPath": "D:\\SCORB\\CONTEUDO_PROJETO\\GerenciamentoFaturas\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{6AD3DAE2-731F-42AB-B2B2-DE15A78D4AB6}|GerenciamentoFaturas.Test\\GerenciamentoFaturas.Test.csproj|d:\\scorb\\conteudo_projeto\\gerenciamentofaturas\\gerenciamentofaturas.test\\services\\faturaservicetests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6AD3DAE2-731F-42AB-B2B2-DE15A78D4AB6}|GerenciamentoFaturas.Test\\GerenciamentoFaturas.Test.csproj|solutionrelative:gerenciamentofaturas.test\\services\\faturaservicetests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6AD3DAE2-731F-42AB-B2B2-DE15A78D4AB6}|GerenciamentoFaturas.Test\\GerenciamentoFaturas.Test.csproj|d:\\scorb\\conteudo_projeto\\gerenciamentofaturas\\gerenciamentofaturas.test\\services\\itemfaturaservicetests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6AD3DAE2-731F-42AB-B2B2-DE15A78D4AB6}|GerenciamentoFaturas.Test\\GerenciamentoFaturas.Test.csproj|solutionrelative:gerenciamentofaturas.test\\services\\itemfaturaservicetests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6AD3DAE2-731F-42AB-B2B2-DE15A78D4AB6}|GerenciamentoFaturas.Test\\GerenciamentoFaturas.Test.csproj|d:\\scorb\\conteudo_projeto\\gerenciamentofaturas\\gerenciamentofaturas.test\\gerenciamentofaturas.test.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{6AD3DAE2-731F-42AB-B2B2-DE15A78D4AB6}|GerenciamentoFaturas.Test\\GerenciamentoFaturas.Test.csproj|solutionrelative:gerenciamentofaturas.test\\gerenciamentofaturas.test.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6AD3DAE2-731F-42AB-B2B2-DE15A78D4AB6}|GerenciamentoFaturas.Test\\GerenciamentoFaturas.Test.csproj|d:\\scorb\\conteudo_projeto\\gerenciamentofaturas\\gerenciamentofaturas.test\\test1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6AD3DAE2-731F-42AB-B2B2-DE15A78D4AB6}|GerenciamentoFaturas.Test\\GerenciamentoFaturas.Test.csproj|solutionrelative:gerenciamentofaturas.test\\test1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{84ED0021-7237-486C-AE56-5FEB3BFBEB6F}|GerenciamentoFaturas.Application\\GerenciamentoFaturas.Application.csproj|d:\\scorb\\conteudo_projeto\\gerenciamentofaturas\\gerenciamentofaturas.application\\interfaces\\iitemfaturaservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{84ED0021-7237-486C-AE56-5FEB3BFBEB6F}|GerenciamentoFaturas.Application\\GerenciamentoFaturas.Application.csproj|solutionrelative:gerenciamentofaturas.application\\interfaces\\iitemfaturaservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,7 +18,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -30,41 +26,28 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "FaturaServiceTests.cs",
-              "DocumentMoniker": "D:\\SCORB\\CONTEUDO_PROJETO\\GerenciamentoFaturas\\GerenciamentoFaturas.Test\\Services\\FaturaServiceTests.cs",
-              "RelativeDocumentMoniker": "GerenciamentoFaturas.Test\\Services\\FaturaServiceTests.cs",
-              "ToolTip": "D:\\SCORB\\CONTEUDO_PROJETO\\GerenciamentoFaturas\\GerenciamentoFaturas.Test\\Services\\FaturaServiceTests.cs",
-              "RelativeToolTip": "GerenciamentoFaturas.Test\\Services\\FaturaServiceTests.cs",
-              "ViewState": "AgIAAMoAAAAAAAAAAAAqwN4AAAAkAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-26T23:10:01.739Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "GerenciamentoFaturas.Test",
-              "DocumentMoniker": "D:\\SCORB\\CONTEUDO_PROJETO\\GerenciamentoFaturas\\GerenciamentoFaturas.Test\\GerenciamentoFaturas.Test.csproj",
-              "RelativeDocumentMoniker": "GerenciamentoFaturas.Test\\GerenciamentoFaturas.Test.csproj",
-              "ToolTip": "D:\\SCORB\\CONTEUDO_PROJETO\\GerenciamentoFaturas\\GerenciamentoFaturas.Test\\GerenciamentoFaturas.Test.csproj",
-              "RelativeToolTip": "GerenciamentoFaturas.Test\\GerenciamentoFaturas.Test.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2026-07-26T23:09:46.36Z",
+              "Title": "IItemFaturaService.cs",
+              "DocumentMoniker": "D:\\SCORB\\CONTEUDO_PROJETO\\GerenciamentoFaturas\\GerenciamentoFaturas.Application\\Interfaces\\IItemFaturaService.cs",
+              "RelativeDocumentMoniker": "GerenciamentoFaturas.Application\\Interfaces\\IItemFaturaService.cs",
+              "ToolTip": "D:\\SCORB\\CONTEUDO_PROJETO\\GerenciamentoFaturas\\GerenciamentoFaturas.Application\\Interfaces\\IItemFaturaService.cs",
+              "RelativeToolTip": "GerenciamentoFaturas.Application\\Interfaces\\IItemFaturaService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwA0AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-27T01:17:40.964Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Test1.cs",
-              "DocumentMoniker": "D:\\SCORB\\CONTEUDO_PROJETO\\GerenciamentoFaturas\\GerenciamentoFaturas.Test\\Test1.cs",
-              "RelativeDocumentMoniker": "GerenciamentoFaturas.Test\\Test1.cs",
-              "ToolTip": "D:\\SCORB\\CONTEUDO_PROJETO\\GerenciamentoFaturas\\GerenciamentoFaturas.Test\\Test1.cs",
-              "RelativeToolTip": "GerenciamentoFaturas.Test\\Test1.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "ItemFaturaServiceTests.cs",
+              "DocumentMoniker": "D:\\SCORB\\CONTEUDO_PROJETO\\GerenciamentoFaturas\\GerenciamentoFaturas.Test\\Services\\ItemFaturaServiceTests.cs",
+              "RelativeDocumentMoniker": "GerenciamentoFaturas.Test\\Services\\ItemFaturaServiceTests.cs",
+              "ToolTip": "D:\\SCORB\\CONTEUDO_PROJETO\\GerenciamentoFaturas\\GerenciamentoFaturas.Test\\Services\\ItemFaturaServiceTests.cs",
+              "RelativeToolTip": "GerenciamentoFaturas.Test\\Services\\ItemFaturaServiceTests.cs",
+              "ViewState": "AgIAADUAAAAAAAAAAAAqwEcAAAAPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-26T21:54:54.284Z",
+              "WhenOpened": "2026-07-27T01:13:55.797Z",
               "EditorCaption": ""
             }
           ]
