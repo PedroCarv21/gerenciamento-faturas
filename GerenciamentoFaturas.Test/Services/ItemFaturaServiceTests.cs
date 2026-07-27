@@ -60,6 +60,44 @@ namespace GerenciamentoFaturas.Tests.Services
         }
 
         [TestMethod]
+        public void Adicionar_DoisItens_DeveSomarCorretamenteOValorTotalDaFatura()
+        {
+            var fatura = new Fatura(
+                1,
+                "Pedro",
+                DateTime.Today);
+
+            FaturaRepository.Adicionar(fatura);
+            FaturaRepository.Salvar();
+
+            _service.Adicionar(
+                fatura.Id,
+                new ItemFaturaRequestDto
+                {
+                    Descricao = "Computador",
+                    Quantidade = 1,
+                    ValorUnitario = 500m
+                });
+
+            var response = _service.Adicionar(
+                fatura.Id,
+                new ItemFaturaRequestDto
+                {
+                    Descricao = "Teclado",
+                    Quantidade = 2,
+                    ValorUnitario = 150m
+                });
+
+            Assert.AreEqual(2, response.Itens.Count);
+
+            Assert.AreEqual(800m, response.ValorTotal);
+
+            Assert.AreEqual(500m, response.Itens.First().ValorTotal);
+
+            Assert.AreEqual(300m, response.Itens.Last().ValorTotal);
+        }
+
+        [TestMethod]
         public void Adicionar_FaturaInexistente_DeveLancarFaturaNaoEncontradaException()
         {
             var request = new ItemFaturaRequestDto
