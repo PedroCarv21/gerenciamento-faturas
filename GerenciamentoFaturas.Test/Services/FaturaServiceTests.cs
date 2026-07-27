@@ -165,5 +165,31 @@ namespace GerenciamentoFaturas.Tests.Services
                 Assert.AreEqual("Fatura não encontrada.", ex.Message);
             }
         }
+
+        [TestMethod]
+        public void Fechar_FaturaJaFechada_DeveLancarFaturaFechadaException()
+        {
+            var request = new FaturaRequestDto
+            {
+                Numero = 1,
+                NomeCliente = "Pedro",
+                DataEmissao = DateTime.Today
+            };
+
+            var criada = _service.Adicionar(request);
+
+            _service.Fechar(criada.Id);
+
+            try
+            {
+                _service.Fechar(criada.Id);
+
+                Assert.Fail("Era esperada uma FaturaFechadaException.");
+            }
+            catch (FaturaFechadaException ex)
+            {
+                Assert.AreEqual("A fatura já está fechada.", ex.Message);
+            }
+        }
     }
 }
