@@ -265,5 +265,143 @@ namespace GerenciamentoFaturas.Tests.Services
                     ex.Message);
             }
         }
+
+        [TestMethod]
+        public void Atualizar_DeveAtualizarItemComSucesso()
+        {
+            var fatura = new Fatura(
+                1,
+                "Pedro",
+                DateTime.Today);
+
+            FaturaRepository.Adicionar(fatura);
+            FaturaRepository.Salvar();
+
+            var adicionarRequest = new ItemFaturaRequestDto
+            {
+                Descricao = "Computador",
+                Quantidade = 2,
+                ValorUnitario = 500m
+            };
+
+            var response = _service.Adicionar(fatura.Id, adicionarRequest);
+
+            var item = response.Itens.First();
+
+            var atualizarRequest = new ItemFaturaRequestDto
+            {
+                Descricao = "Computador Dev",
+                Quantidade = 3,
+                ValorUnitario = 800m,
+                Justificativa = "Equipamento para desenvolvimento."
+            };
+
+            var resultado = _service.Atualizar(
+                fatura.Id,
+                item.Id,
+                atualizarRequest);
+
+            Assert.IsNotNull(resultado);
+
+            Assert.AreEqual(1, resultado.Itens.Count);
+
+            var itemAtualizado = resultado.Itens.First();
+
+            Assert.AreEqual("Computador Dev", itemAtualizado.Descricao);
+            Assert.AreEqual(3, itemAtualizado.Quantidade);
+            Assert.AreEqual(800m, itemAtualizado.ValorUnitario);
+            Assert.AreEqual(2400m, itemAtualizado.ValorTotal);
+            Assert.AreEqual("Equipamento para desenvolvimento.", itemAtualizado.Justificativa);
+
+            Assert.AreEqual(2400m, resultado.ValorTotal);
+        }
+
+        [TestMethod]
+        public void Atualizar_FaturaFechada_DeveLancarFaturaFechadaException()
+        {
+            var fatura = new Fatura(
+                1,
+                "Pedro",
+                DateTime.Today);
+
+            FaturaRepository.Adicionar(fatura);
+            FaturaRepository.Salvar();
+
+            var response = _service.Adicionar(fatura.Id, new ItemFaturaRequestDto
+            {
+                Descricao = "Computador",
+                Quantidade = 1,
+                ValorUnitario = 500m
+            });
+
+            var item = response.Itens.First();
+
+            fatura.Fechar();
+            FaturaRepository.Atualizar(fatura);
+            FaturaRepository.Salvar();
+
+            try
+            {
+                _service.Atualizar(
+                    fatura.Id,
+                    item.Id,
+                    new ItemFaturaRequestDto
+                    {
+                        Descricao = "Computador Dev",
+                        Quantidade = 2,
+                        ValorUnitario = 1000m,
+                        Justificativa = "Programação web"
+                    });
+
+                Assert.Fail("Era esperada uma FaturaFechadaException.");
+            }
+            catch (FaturaFechadaException ex)
+            {
+                Assert.AreEqual("A fatura já está fechada.", ex.Message);
+            }
+        }
+
+        [TestMethod]
+        public void Atualizar_ValorAcimaDeMilSemJustificativa_DeveLancarArgumentException()
+        {
+            var fatura = new Fatura(
+                1,
+                "Pedro",
+                DateTime.Today);
+
+            FaturaRepository.Adicionar(fatura);
+            FaturaRepository.Salvar();
+
+            var response = _service.Adicionar(fatura.Id, new ItemFaturaRequestDto
+            {
+                Descricao = "Computador",
+                Quantidade = 1,
+                ValorUnitario = 500m
+            });
+
+            var item = response.Itens.First();
+
+            try
+            {
+                _service.Atualizar(
+                    fatura.Id,
+                    item.Id,
+                    new ItemFaturaRequestDto
+                    {
+                        Descricao = "Computador",
+                        Quantidade = 2,
+                        ValorUnitario = 600m,
+                        Justificativa = ""
+                    });
+
+                Assert.Fail("Era esperada uma ArgumentException.");
+            }
+            catch (ArgumentException ex)
+            {
+                Assert.AreEqual(
+                    "É preciso informar uma justificativa se o valor total do item for maior que R$ 1000,00.",
+                    ex.Message);
+            }
+        }
     }
 }
