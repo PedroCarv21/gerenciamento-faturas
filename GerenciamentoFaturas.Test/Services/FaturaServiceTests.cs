@@ -127,5 +127,43 @@ namespace GerenciamentoFaturas.Tests.Services
                 Assert.AreEqual("Fatura não encontrada.", ex.Message);
             }
         }
+
+        [TestMethod]
+        public void Fechar_DeveFecharFaturaComSucesso()
+        {
+            var request = new FaturaRequestDto
+            {
+                Numero = 1,
+                NomeCliente = "Pedro",
+                DataEmissao = DateTime.Today
+            };
+
+            var criada = _service.Adicionar(request);
+
+            var response = _service.Fechar(criada.Id);
+
+            Assert.IsNotNull(response);
+            Assert.AreEqual(StatusFatura.Fechada, response.Status);
+
+            var fatura = FaturaRepository.ObterPorId(criada.Id);
+
+            Assert.IsNotNull(fatura);
+            Assert.AreEqual(StatusFatura.Fechada, fatura.Status);
+        }
+
+        [TestMethod]
+        public void Fechar_FaturaInexistente_DeveLancarFaturaNaoEncontradaException()
+        {
+            try
+            {
+                _service.Fechar(Guid.NewGuid());
+
+                Assert.Fail("Era esperada uma FaturaNaoEncontradaException.");
+            }
+            catch (FaturaNaoEncontradaException ex)
+            {
+                Assert.AreEqual("Fatura não encontrada.", ex.Message);
+            }
+        }
     }
 }
