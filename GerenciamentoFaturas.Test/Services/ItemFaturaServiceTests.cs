@@ -403,5 +403,77 @@ namespace GerenciamentoFaturas.Tests.Services
                     ex.Message);
             }
         }
+
+        [TestMethod]
+        public void Remover_DeveRemoverItemComSucesso()
+        {
+            var fatura = new Fatura(
+                1,
+                "Pedro",
+                DateTime.Today);
+
+            FaturaRepository.Adicionar(fatura);
+            FaturaRepository.Salvar();
+
+            var response = _service.Adicionar(
+                fatura.Id,
+                new ItemFaturaRequestDto
+                {
+                    Descricao = "Computador",
+                    Quantidade = 2,
+                    ValorUnitario = 500m
+                });
+
+            var item = response.Itens.First();
+
+            _service.Remover(fatura.Id, item.Id);
+
+            var faturaAtualizada = FaturaRepository.ObterPorId(fatura.Id);
+
+            Assert.IsNotNull(faturaAtualizada);
+            Assert.AreEqual(0, faturaAtualizada.Itens.Count);
+            Assert.AreEqual(0m, faturaAtualizada.ValorTotal);
+        }
+
+        [TestMethod]
+        public void Remover_FaturaFechada_DeveLancarFaturaFechadaException()
+        {
+            var fatura = new Fatura(
+                1,
+                "Pedro",
+                DateTime.Today);
+
+            FaturaRepository.Adicionar(fatura);
+            FaturaRepository.Salvar();
+
+            var response = _service.Adicionar(
+                fatura.Id,
+                new ItemFaturaRequestDto
+                {
+                    Descricao = "Computador",
+                    Quantidade = 1,
+                    ValorUnitario = 500m
+                });
+
+            var item = response.Itens.First();
+
+            fatura.Fechar();
+
+            FaturaRepository.Atualizar(fatura);
+            FaturaRepository.Salvar();
+
+            try
+            {
+                _service.Remover(
+                    fatura.Id,
+                    item.Id);
+
+                Assert.Fail("Era esperada uma FaturaFechadaException.");
+            }
+            catch (FaturaFechadaException ex)
+            {
+                Assert.AreEqual("A fatura já está fechada.", ex.Message);
+            }
+        }
     }
 }
