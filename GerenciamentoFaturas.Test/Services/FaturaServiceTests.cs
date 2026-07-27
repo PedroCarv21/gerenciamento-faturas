@@ -237,5 +237,61 @@ namespace GerenciamentoFaturas.Tests.Services
 
             Assert.AreEqual("Maria da Silva", resultado.First().NomeCliente);
         }
+
+        [TestMethod]
+        public void Consultar_PorStatus_DeveRetornarSomenteFaturasFechadas()
+        {
+            var aberta = _service.Adicionar(new FaturaRequestDto
+            {
+                Numero = 1,
+                NomeCliente = "Pedro",
+                DataEmissao = DateTime.Today
+            });
+
+            var fechada = _service.Adicionar(new FaturaRequestDto
+            {
+                Numero = 2,
+                NomeCliente = "Maria",
+                DataEmissao = DateTime.Today
+            });
+
+            _service.Fechar(fechada.Id);
+
+            var resultado = _service.Consultar(
+                null,
+                null,
+                StatusFatura.Fechada);
+
+            Assert.AreEqual(1, resultado.Count());
+
+            Assert.AreEqual(StatusFatura.Fechada, resultado.First().Status);
+        }
+
+        [TestMethod]
+        public void Consultar_PorDataEmissao_DeveRetornarSomenteAsFaturasDaDataInformada()
+        {
+            _service.Adicionar(new FaturaRequestDto
+            {
+                Numero = 1,
+                NomeCliente = "Pedro",
+                DataEmissao = DateTime.Today
+            });
+
+            _service.Adicionar(new FaturaRequestDto
+            {
+                Numero = 2,
+                NomeCliente = "Maria",
+                DataEmissao = DateTime.Today.AddDays(-1)
+            });
+
+            var resultado = _service.Consultar(
+                null,
+                DateTime.Today,
+                null);
+
+            Assert.AreEqual(1, resultado.Count());
+
+            Assert.AreEqual(DateTime.Today, resultado.First().DataEmissao);
+        }
     }
 }
