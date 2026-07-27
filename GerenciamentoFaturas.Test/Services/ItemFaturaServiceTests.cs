@@ -80,5 +80,190 @@ namespace GerenciamentoFaturas.Tests.Services
                 Assert.AreEqual("Fatura não encontrada.", ex.Message);
             }
         }
+
+        [TestMethod]
+        public void Adicionar_FaturaFechada_DeveLancarFaturaFechadaException()
+        {
+            var fatura = new Fatura(
+                1,
+                "Pedro",
+                DateTime.Today);
+
+            fatura.Fechar();
+
+            FaturaRepository.Adicionar(fatura);
+            FaturaRepository.Salvar();
+
+            var request = new ItemFaturaRequestDto
+            {
+                Descricao = "Computador",
+                Quantidade = 2,
+                ValorUnitario = 500m
+            };
+
+            try
+            {
+                _service.Adicionar(fatura.Id, request);
+
+                Assert.Fail("Era esperada uma FaturaFechadaException.");
+            }
+            catch (FaturaFechadaException ex)
+            {
+                Assert.AreEqual("A fatura já está fechada.", ex.Message);
+            }
+        }
+
+        [TestMethod]
+        public void Adicionar_DescricaoVazia_DeveLancarArgumentException()
+        {
+            var fatura = new Fatura(
+                1,
+                "Pedro",
+                DateTime.Today);
+
+            FaturaRepository.Adicionar(fatura);
+            FaturaRepository.Salvar();
+
+            var request = new ItemFaturaRequestDto
+            {
+                Descricao = "",
+                Quantidade = 1,
+                ValorUnitario = 100m
+            };
+
+            try
+            {
+                _service.Adicionar(fatura.Id, request);
+
+                Assert.Fail("Era esperada uma ArgumentException.");
+            }
+            catch (ArgumentException ex)
+            {
+                Assert.AreEqual("A descrição é obrigatória.", ex.Message);
+            }
+        }
+
+        [TestMethod]
+        public void Adicionar_DescricaoMenorQueTresCaracteres_DeveLancarArgumentException()
+        {
+            var fatura = new Fatura(
+                1,
+                "Pedro",
+                DateTime.Today);
+
+            FaturaRepository.Adicionar(fatura);
+            FaturaRepository.Salvar();
+
+            var request = new ItemFaturaRequestDto
+            {
+                Descricao = "ab",
+                Quantidade = 1,
+                ValorUnitario = 100m
+            };
+
+            try
+            {
+                _service.Adicionar(fatura.Id, request);
+
+                Assert.Fail("Era esperada uma ArgumentException.");
+            }
+            catch (ArgumentException ex)
+            {
+                Assert.AreEqual("A descrição deve ter no mínimo 3 caracteres.", ex.Message);
+            }
+        }
+
+        [TestMethod]
+        public void Adicionar_QuantidadeIgualZero_DeveLancarArgumentException()
+        {
+            var fatura = new Fatura(
+                1,
+                "Pedro",
+                DateTime.Today);
+
+            FaturaRepository.Adicionar(fatura);
+            FaturaRepository.Salvar();
+
+            var request = new ItemFaturaRequestDto
+            {
+                Descricao = "Computador",
+                Quantidade = 0,
+                ValorUnitario = 100m
+            };
+
+            try
+            {
+                _service.Adicionar(fatura.Id, request);
+
+                Assert.Fail("Era esperada uma ArgumentException.");
+            }
+            catch (ArgumentException ex)
+            {
+                Assert.AreEqual("A quantidade deve ser maior que zero.", ex.Message);
+            }
+        }
+
+        [TestMethod]
+        public void Adicionar_ValorUnitarioIgualZero_DeveLancarArgumentException()
+        {
+            var fatura = new Fatura(
+                1,
+                "Pedro",
+                DateTime.Today);
+
+            FaturaRepository.Adicionar(fatura);
+            FaturaRepository.Salvar();
+
+            var request = new ItemFaturaRequestDto
+            {
+                Descricao = "Computador",
+                Quantidade = 1,
+                ValorUnitario = 0m
+            };
+
+            try
+            {
+                _service.Adicionar(fatura.Id, request);
+
+                Assert.Fail("Era esperada uma ArgumentException.");
+            }
+            catch (ArgumentException ex)
+            {
+                Assert.AreEqual("O valor unitário deve ser maior que zero.", ex.Message);
+            }
+        }
+
+        [TestMethod]
+        public void Adicionar_ValorAcimaDeMilSemJustificativa_DeveLancarArgumentException()
+        {
+            var fatura = new Fatura(
+                1,
+                "Pedro",
+                DateTime.Today);
+
+            FaturaRepository.Adicionar(fatura);
+            FaturaRepository.Salvar();
+
+            var request = new ItemFaturaRequestDto
+            {
+                Descricao = "Computador",
+                Quantidade = 2,
+                ValorUnitario = 600m,
+                Justificativa = ""
+            };
+
+            try
+            {
+                _service.Adicionar(fatura.Id, request);
+
+                Assert.Fail("Era esperada uma ArgumentException.");
+            }
+            catch (ArgumentException ex)
+            {
+                Assert.AreEqual(
+                    "É preciso informar uma justificativa se o valor total do item for maior que R$ 1000,00.",
+                    ex.Message);
+            }
+        }
     }
 }

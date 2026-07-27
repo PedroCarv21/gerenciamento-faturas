@@ -156,7 +156,7 @@ namespace GerenciamentoFaturas.Application.Services
                 string.IsNullOrWhiteSpace(request.Justificativa))
             {
                 throw new ArgumentException(
-                    "É preciso informar uma justificativa se o valor total do item for maior que R$ 1.000,00.");
+                    "É preciso informar uma justificativa se o valor total do item for maior que R$ 1000,00.");
             }
         }
     }
